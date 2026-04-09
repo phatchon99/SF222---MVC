@@ -15,7 +15,7 @@ router = APIRouter(
     tags=["Medical Records"]
 )
 
-@router.post("/", response_model=MedicalRecordResponse)
+@router.post("", response_model=MedicalRecordResponse)
 def create_record(record: MedicalRecordCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     if current_user.role == 'admin':
         raise HTTPException(status_code=403, detail="Admins are not allowed to create medical records")

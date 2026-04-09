@@ -15,12 +15,12 @@ router = APIRouter(
     tags=["Patients"]
 )
 
-@router.get("/", response_model=List[PatientResponse])
+@router.get("", response_model=List[PatientResponse])
 def get_patients(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     patients = db.query(Patient).offset(skip).limit(limit).all()
     return patients
 
-@router.post("/", response_model=PatientResponse)
+@router.post("", response_model=PatientResponse)
 def create_patient(patient: PatientCreate, db: Session = Depends(get_db), current_admin: User = Depends(get_current_admin)):
     # Check if HN exists
     db_patient = db.query(Patient).filter(Patient.hn == patient.hn).first()

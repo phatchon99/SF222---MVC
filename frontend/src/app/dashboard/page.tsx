@@ -91,7 +91,7 @@ export default function DashboardPage() {
           <h3 className="text-lg font-bold text-gray-900 mb-4">สัดส่วนผู้ป่วยแยกตามเพศ</h3>
           <div className="h-64">
              {stats?.gender_stats?.length > 0 ? (
-               <ResponsiveContainer width="100%" height="100%">
+               <ResponsiveContainer width="100%" height="100%" minWidth={0}>
                  <PieChart>
                    <Pie
                      data={stats.gender_stats}
